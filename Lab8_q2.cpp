@@ -1,73 +1,45 @@
-#include <iostream> 
- using namespace std;
+#include <iostream>
+using namespace std;
 
- //Finding largest element 
-
-int largest(int i) {
-    int j;
-    int array [i] ;
-        for (j=0 ; j<i ; j++) {
-            cout << " Enter " << j+1 << "th element of the array : " ;
-            cin >> array [j] ;
+float largest(float arr[],int size)  //Function for finding the maximum of the elements in array
+{
+    int large=arr[0];           //Declaring an array
+    for(int i=1;i<size;i++)          //Condition for finding the maximum of the elements
+    {
+        if(large<arr[i])
+        {
+            large=arr[i];
         }
-    
-    int large = array [0];
-        for (j=0 ; j < i ; j++) {
-            if (large < array [j]){
-                large = array [j]; 
-            }
-        
-        }
-    cout << "The largest element is " << large << endl;
+    }
+    return large;
 }
 
-//finding smallest element
 
-int smallest(int i) {
-    int j;
-    int array [i] ;
-        for (j=0 ; j<i ; j++) {
-            cout << " Enter " << j+1 << "th element of the array : " ;
-            cin >> array [j] ;
+float smallest(float arr[],int size)        //Function for finding the minimum of the elements in array
+{
+    int small=arr[0];
+    for(int i=1;i<size;i++)     //Condition for finding the minimum of the elements
+    {
+        if(small>arr[i])
+        {
+            small=arr[i];
         }
-    
-    int small = array [0];
-        for (j=0 ; j < i ; j++) {
-            if (small > array [j]){
-                small = array [j]; 
-            }
-        
-        }
-    cout << "The smallest element is " << small << endl;
-
+    }
+    return small;
 }
 
-//Finding mean
-
-int mean(int i) {
-    int j;
-    float sum = 0.0;
-    float Mean;
-    float array [i] ;
-
-            for (j=0 ; j < i ; j++ ) {
-                    cout << " Enter " << j + 1 << "th element : " ;
-                    cin >> array [j] ;
-            }
-
-            for (j=0 ; j<i ; j++) {
-                    sum = sum + array [j];
-            }
-        
-        Mean = sum / i ;
-
-        cout << "The mean of the given element is " << Mean << endl;
-
+float mean(float arr[],int size)            //Function for finding the mean of the elements in array
+{
+    float sum=0;            //Initializing variable
+    for(int i=0;i<size;i++)         //Condition for finding the mean of the elements
+    {
+        sum=sum+arr[i];
+    }
+    float avg=sum/size;
+    return avg;
 }
 
-//Finding Median
-
-int median(float arr[],int size)             //Function for finding the median of the elements in array
+float median(float arr[],int size)             //Function for finding the median of the elements in array
 {
     int temp;           //Declaring variables
     float medn;
@@ -99,8 +71,7 @@ int median(float arr[],int size)             //Function for finding the median o
 
 }
 
-//Finding mode
-    int mode(float arr[],int size)              //Function for finding the mode of the elements in array
+int mode(float arr[],int size)              //Function for finding the mode of the elements in array
 {
     int count[size];      //Calling above function
     for(int h=0;h<size;h++)                //Condition for finding the mode of the elements
@@ -128,44 +99,26 @@ int median(float arr[],int size)             //Function for finding the median o
     return arr[temp];
 }
 
-int main () {
-    int j ;
-    int i;
-        cout << "Q.2 " << endl;
-        cout << "Enter the size of the array : " ;
-        cin >> i;
-        cout << "What you want to find ?" << endl;
-        cout << "1. Largest" << endl;
-        cout << "2. Smallest" << endl;
-        cout << "3. Mean" << endl;
-        cout << "4. Median" << endl;
-        cout << "5.mode" << endl;
-        cout << "Option no. : ";
-        cin >> j;
-
-        if (j==1){
-            largest (i);
-        }
-
-        else if (j==2){
-            smallest (i);
-        }
-
-        else if (j==3) {
-            mean (i);
-        }
-        else if (j==4){
-            median (i);
-            }
-        else if (j==5){
-            mode (i);
-           }
-        else {
-        
-         cout<< "Sorry, Try again" << endl;
-       }
-          
-        
-        
-        
+int main()          //Driver function
+{
+    float a;
+    int i,size;
+    i=0;
+    cout<<"Q.2"<<endl;
+    cout<<"Enter the size of the array: ";      //Asking the user for entering the size of the array
+    cin>>size;
+    float arr[size];
+    while(i<size)
+    {
+        cout<<"Enter value "<<i+1<<": ";        //Asking the user for entering the elements in array
+        cin>>a;
+        arr[i]=a;
+        i++;
+    }
+    cout<<"The maximum value in the array is: "<<largest(arr,size)<<endl;        //Printing out the mean , median ,mode ,maximum and minimum of the elements in array
+    cout<<"The minimum value in the array is: "<<smallest(arr,size)<<endl;
+    cout<<"The mean of the values of the array is: "<<mean(arr,size)<<endl;
+    cout<<"The median of the array is: "<<median(arr,size)<<endl;
+    cout<<"The mode of the given array is: "<<mode(arr,size)<<endl;
+    return 0;
 }
